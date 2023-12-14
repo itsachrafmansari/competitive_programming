@@ -1,5 +1,3 @@
-from math import inf
-
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         firstMax = 0
