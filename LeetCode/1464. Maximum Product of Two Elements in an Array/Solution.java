@@ -1,31 +1,19 @@
-import java.util.HashMap;
-
 class Solution {
     public int maxProduct(int[] nums) {
-        HashMap<String, Integer> firstMax = new HashMap<String, Integer>();
-        firstMax.put("value", -999999999);
-        firstMax.put("index", -1);
-
-        HashMap<String, Integer> secondMax = new HashMap<String, Integer>();
-        secondMax.put("value", -999999999);
-        secondMax.put("index", -1);
+        int firstMax = 0, secondMax = 0;
 
         for (int i = 0; i < nums.length; i++) {
 
-            if (nums[i] > firstMax.get("value")) {
-                secondMax.put("value", firstMax.get("value"));
-                secondMax.put("index", firstMax.get("index"));
-                
-                firstMax.put("value", nums[i]);
-                firstMax.put("index", i);
+            if (nums[i] > firstMax) {
+                secondMax = firstMax;
+                firstMax = nums[i];
 
-            } else if (nums[i] > secondMax.get("value")) {
-                secondMax.put("value", nums[i]);
-                secondMax.put("index", i);
+            } else if (nums[i] > secondMax) {
+                secondMax = nums[i];
             }
 
         }
-        
-        return (firstMax.get("value") - 1) * (secondMax.get("value") - 1);
+
+        return (firstMax - 1) * (secondMax - 1);
     }
 }
